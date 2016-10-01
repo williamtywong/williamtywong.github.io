@@ -11,6 +11,55 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    
+      <script type="text/javascript">
+    function onVisaCheckoutReady() {
+      V.init({
+        apikey: "86P0H9M4W7JH3VB71RZA13jrW2YNoBPjV71nHPffcOwcAZyLQ",
+        settings: {
+          locale: "en_SG",
+          countryCode: "US",
+          displayName: "William Wong Test",
+          websiteUrl: "www....Corp.com",
+          shipping: {
+            acceptedRegions: ["SG",],
+            collectShipping: "true"
+          },
+          payment: {
+            cardBrands: [
+              "VISA",],
+            acceptCanadianVisaDebit: "true",
+            billingCountries:["SG",]
+          },
+          review: {
+            message: "Finish Registration at Me",
+            buttonAction: "Continue"
+          },
+          dataLevel: "SUMMARY"
+        },
+        paymentRequest: {
+          merchantRequestId: "00001",
+          currencyCode: "SGD",
+          subtotal: "15.00",
+          shippingHandling: "2.00",
+          tax: "2.00",
+          discount: "0.00",
+          giftWrap: "2.00",
+          misc: "1.00",
+          total: "22.00",
+          description: "Everything",
+          orderId: "00001",
+          promoCode: "First Try",
+         
+        }
+      }
+            );
+      V.on("payment.success", function(payment){document.write(JSON.stringify(payment)); });
+      V.on("payment.cancel", function (payment) { ... });
+                                                 V.on("payment.error", function (payment, error) { ... });
+                                                                                                 }
+     </script>
+    
   </head>
   <body>
     <div class="wrapper">
@@ -32,6 +81,14 @@
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
+    
+    <img alt="Visa Checkout" class="v-button" role="button"
+       src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png?
+            cardBrands=VISA,MASTERCARD,DISCOVER,AMEX"/>
+  <script type="text/javascript"
+          src="https://sandbox-assets.secure.checkout.visa.com/
+               checkout-widget/resources/js/integration/v1/sdk.js">
+  </script>
     
   </body>
 </html>
